@@ -21,17 +21,31 @@ router.get("/stats", (req, res) => {
 //API Routes
 //==========================================================
 router.get("/api/workouts", (req, res) => {
-    Workout.aggregate([{
-        $addFields: {
-          totalDuration: { $sum: exercises.duration },
-        },
-      }]);
+  // Workout.aggregate([{
+  //   $addFields: {
+  //     totalDuration: { $sum: "$exercises.duration" },
+  //   },
+  // }]);
+
   Workout.find({})
     .then((data) => {
-    
-      console.log("data from GET result for all workouts", data);
-      res.json(data);
+      let mostRecent = data[data.length - 1];
+      console.log(mostRecent)
+      let total = 0;
+      for (i = 0; i < mostRecent.exercises.length; i++) {
+        total += mostRecent.exercises[i].duration;
+      }
+      console.log(total)
+      Workout.aggregate([ {
+        $addFields: {
+          totalDuration: {$sum: total}
+        }
+      }])
+      .then(results => {
+      console.log("data from GET result for all workouts", results);
+      res.json(results);
     })
+  })
     .catch((err) => {
       res.status(400).json(err);
     });
@@ -46,7 +60,7 @@ router.put("/api/workouts/:id", (req, res) => {
     .then((result) => {
       Workout.aggregate([{
         $addFields: {
-          totalDuration: { $sum: exercises.duration },
+          totalDuration: { $sum: duration },
         },
       }]);
       res.json(result);
