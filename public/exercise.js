@@ -22,7 +22,7 @@ async function initExercise() {
 
   if (location.search.split("=")[1] === undefined) {
     workout = await API.createWorkout()
-    console.log(workout)
+    console.log("workout in exercise.js initExercise function = ", workout)
   }
   if (workout) {
     location.search = "?id=" + workout._id;
@@ -142,8 +142,11 @@ if (workoutTypeSelect) {
 }
 if (completeButton) {
   completeButton.addEventListener("click", function (event) {
+    event.preventDefault();
     shouldNavigateAway = true;
-    handleFormSubmit(event);
+    //this was submitting an empty form for a workout, despite the "validation" above so I'm not sure what's going on.
+    //handleFormSubmit(event);
+    location.href = "/"
   });
 }
 if (addButton) {

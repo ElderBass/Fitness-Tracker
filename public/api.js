@@ -22,7 +22,7 @@ const API = {
     const json = await res.json();
 
     return json;
-  },
+  }, //wtf are we just setting the data to an empty object then...? I don't get this
   async createWorkout(data = {}) {
     const res = await fetch("/api/workouts", {
       method: "POST",
