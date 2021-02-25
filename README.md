@@ -1,61 +1,68 @@
-# Unit 17 NoSQL Homework: Workout Tracker
+# Fitness Tracker
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+An app for logging workouts, by Seth Zygarlicke
 
-## User Story
+### Links
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+* Github Repository: [https://github.com/ElderBass/Fitness-Tracker.git](https://github.com/ElderBass/Fitness-Tracker.git)
+* Heroku Deployed: [https://serene-ocean-84827.herokuapp.com/](https://serene-ocean-84827.herokuapp.com/)
 
-## Business Context
+## Table of Contents
 
-A consumer will reach their fitness goals more quickly when they track their workout progress.
 
-## Acceptance Criteria
+* [Description](#description)
+    
+* [Installation](#installation)
 
-When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
+* [Technologies](#technologies)
+    
+* [Contributing](#contributing)
+    
+* [Questions](#questions)
 
-The user should be able to:
+## Description
 
-  * Add exercises to the most recent workout plan.
+Fitness Tracker is a node/express application for creating, customizing, logging, and tracking your workouts. 
 
-  * Add new exercises to a new workout plan.
+The user opens the application and starts a new workout. From there, they are led to a form for filling out details on the nature of their exercise. First, they choose either a 'resistance' or 'cardio' exercise. Depending on what they choose, the form's fields will change accordingly. 
 
-  * View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
+For 'resistance' exercises, they must enter the name of the workout, the weight at which they will perform the workout, the number of sets and reps they will do, and duration of the exercise. 
 
-  * View the total duration of each workout from the past seven workouts on the `stats` page.
+Similarly, for cardio, the user enters the name of the exercise, the number of miles they will travel, and the duration of the exercise.
 
-> **Important:** Look into using a MongoDB aggregate function to dynamically add up and return the total duration for each workout. Check out the [MongoDB documentation on the $addFields](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/), the [MongoDB documentation on the $sum operator](https://docs.mongodb.com/manual/reference/operator/aggregation/sum/), and the [Mongoose documentation on aggregate functions](https://mongoosejs.com/docs/api.html#aggregate_Aggregate) to learn how it can be accomplished.
+On the final exercise the user plans on entering - and this is key - the user must hit the COMPLETE button. This will log the final exercise into the workout and return the user to the 'home' page. On the home page will now be displayed stats for the workout just logged. The user can now click 'Continue Workout' to add more exercises to the current workout, or they can create a fresh workout and add exercises to it.
 
-To deploy an application with a MongoDB database to Heroku, you'll need to set up a MongoDB Atlas account and connect a database from there to your application. Be sure to use the following guides for support:
+The user can check statistics on all the past seven workouts logged by clicking on the 'Dashboard' link in the navigation bar. This navigates the user to page displaying two charts, one for total duration of the past seven workouts, the other showing total weight lifted per workout. Both of these data will have a color-coded pie chart beneath them for a different visual representation of their data.
 
-  * [Set Up MongoDB Atlas](../04-Important/MongoAtlas-Setup.md)
+### Demonstration
 
-  * [Deploy with Heroku and MongoDB Atlas](../04-Important/MongoAtlas-Deploy.md)
+![Fitness Tracker Demonstration](public/demo/fitness-tracker.gif)
 
-## Commit Early and Often
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for the following two reasons:
+## Technologies
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+Fitness tracker is a node.js application that uses the express npm package to establish a connection to servers and develop routes between the client and server. Another critical dependency is the mongoose npm package, which allows the application to connect to the application's database stored in Mongo. 
 
-2. Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
+One other package used in this application was nodemon, which allowed us to restart and render our application in real time after changes and saves.
 
-Follow these guidelines for committing:
+All of the code was written in the VS Code program.  
 
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
+## Installation
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
+To install the many dependencies this application utilizes, open the server.js file a new integrated terminal in your VS Code and run the following command:
 
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
+```
+npm i
+```
 
-* Test your application before you commit to ensure functionality at every step in the development process.
+This will install every dependency contained within the package.json file.
 
-We want you to have well over 200 commits by graduation, so commit early and often!
+## Contributing
 
-## Submission on BCS
+If you wish to contribute to this repository, feel free to fork it to your local machine and do with it as you please.
 
-You are required to submit the following:
+## Questions 
 
-* The URL to the deployed application
+If you have any questions or comments about this repo, email the creator Seth at [zygster11@gmail.com](zygster11@gmail.com)
 
-* The URL to the GitHub repository
+For more projects by Seth, visit his Github page at [https://github.com/ElderBass](https://github.com/ElderBass)
